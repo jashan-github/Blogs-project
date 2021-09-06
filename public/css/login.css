@@ -1,0 +1,20 @@
+body {
+    
+    background-image: url(../img/login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:unset;
+}
+
+h2 {
+    text-align: center;
+}
+.card-shadow {
+    background-color: whitesmoke;
+    margin-top: 40px;
+}
+
+.card-shadow .card-header {
+    background-color: rgb(71, 113, 190);
+}
+
