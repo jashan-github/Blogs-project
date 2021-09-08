@@ -11,39 +11,39 @@ require 'public/partials/admindashbar.php';
     <div class="row justify-content-center">
         <div class="col-md-9">
             <div class="line" style="text-align: right;">
-                <a href="add-member" class="btn btn-primary"> Add Member</a>
+                <a href="add-member" class="btn btn-primary"> Add Blog</a>
             </div><br>
             <div class="card-header text-center">
-                <h2> Member's List </h2>
+                <h2> Blog's List </h2>
             </div>
             <div class="card-body">
-                <?php if (!empty($members)) {?>
+                <?php if (!empty($blogs)) {?>
                 <table class="table display responsive-table">
                     <thead>
                         <th> id</th>
-                        <th> Name</th>
-                        <th> Email Address</th>
-                        <th> Phone</th>
+                        <th> Title</th>
+                        <th> Blog Content</th>
+                        <!-- <th> Phone</th> -->
                         <!-- <th> Password</th> -->
-                        <th> Creation Date</th>
+                        <th> Publish Date</th>
                         <th> Action</th>
                     </thead>
                     <tbody>
                         <?php 
                         $i = 1;
-                        foreach($members as $key => $member) { ?>
+                        foreach($blogs as $key => $blog) { ?>
                         <tr>
                             <td> <?php echo $i; ?></td>
-                            <td> <?php echo $member->name; ?></td>
-                            <td> <?php echo $member->email; ?></td>
-                            <td> <?php echo $member->phone; ?></td>
-                            <!-- <td> <?php echo $member->password;?></td> -->
-                            <td> <?php echo $member->creation_date;?></td>
+                            <td> <?php echo $blog->title; ?></td>
+                            <td> <?php echo $blog->content; ?></td>
+                            <!-- <td> <?php echo $blog->phone; ?></td> -->
+                            <!-- <td> <?php echo $blog->password;?></td> -->
+                            <td> <?php echo $blog->publish_date;?></td>
                             <td>
-                                <a href="edit-member?id=<?php echo $member->id;?>" class="btn btn-primary">Edit
+                                <a href="edit-blog?id=<?php echo $blog->id;?>" class="btn btn-primary">Edit
                                 </a>
                                 <a onclick="return confirm('Are you sure you want to delete this item?');"
-                                    href="" class="btn btn-danger">Delete
+                                    href="delete-blog?id=<?php echo $blog->id;?>" class="btn btn-danger">Delete
                                 </a>
                             </td>
                         </tr>

@@ -67,7 +67,11 @@ class QueryBuilder
 
     public function remove($table, $id)
     {   
-        $sql = "delete from {$table} WHERE $id = :id";
+        $sql = "delete from {$table} WHERE id = '".$id."'";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute();        
+        $result= $stmt->fetch(PDO::FETCH_CLASS);
+       
         
     }
     

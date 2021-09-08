@@ -6,7 +6,8 @@ Class Router
 {   
     public $routes=[
         'GET'=>[],
-        'POST' =>[]
+        'POST' =>[],
+        'DELETE' => []
     ];
 
     public static function load($file)
@@ -27,6 +28,11 @@ Class Router
     public function post($uri, $controller)
     {
         $this->routes['POST'][$uri] = $controller;
+    }
+
+    public function delete($uri, $controller)
+    {
+        $this->routes['DELETE'][$uri] = $controller;
     }
 
     // public function define ($routes)

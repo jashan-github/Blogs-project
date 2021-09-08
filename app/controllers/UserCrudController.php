@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 
-class MembersController
+class UserCrudController
 {
     public function show()
     {
@@ -24,9 +24,7 @@ class MembersController
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'phone' => $_POST['phone'],
-            'password' => md5($_POST['password']),
-            // 'confirm_password' => md5($_POST['confirm_password']),
-            //'role_id' => 2
+            'password' => md5($_POST['password'])
         ]);
         
         return redirect('members');
@@ -34,8 +32,10 @@ class MembersController
 
     public function delete()
     {
-        $members = App::get('database')->remove('users');
+        App::get('database')->remove('users',[
+            'id' => $_GET['id']
+        ]);
 
         return view('admin/members', compact('members'));
-    }
+    }  
 }
