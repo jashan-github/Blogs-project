@@ -1,0 +1,1 @@
+Here is Admin blogs view

@@ -43,7 +43,7 @@ require 'public/partials/admindashbar.php';
                                 <a href="edit-member?id=<?php echo $member->id;?>" class="btn btn-primary">Edit
                                 </a>
                                 <a onclick="return confirm('Are you sure you want to delete this item?');"
-                                    href="" class="btn btn-danger">Delete
+                                    href="delete-member?id=<?php echo $member->id;?>" class="btn btn-danger">Delete
                                 </a>
                             </td>
                         </tr>

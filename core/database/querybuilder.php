@@ -1,5 +1,7 @@
 <?php
 
+use DevCoder\SessionManager;
+
 class QueryBuilder
 {
     protected $pdo;
@@ -18,13 +20,14 @@ class QueryBuilder
         $stmt->execute();
         
         $userData= $stmt->fetch(PDO::FETCH_OBJ);
+        $sessionManager = new SessionManager();
         
         if(!empty($userData))
         {
             $userData = (array) $userData;
             unset($userData['password']);
-            $_SESSION['userData'] = $userData;            
-        }        
+            $sessionManager->set('userData', $userData);          
+        }
         return $userData;
     }
 
@@ -36,16 +39,31 @@ class QueryBuilder
         return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
+    public function select($table, $id)
+    {
+        $sql = "select * from {$table} WHERE id = '".$id."' ";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute();
+        
+        $userData= $stmt->fetch(PDO::FETCH_OBJ);
+        return $userData;        
+    }
+
+    public function fetchUserBlogs($table, $id)
+    {
+        $sql = "select * from {$table} WHERE user_id = '".$id."' ";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute();        
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+         
+    }
+
     // insert function for add new data in db
 
     public function insert($table, $parameters)
     {
         /**
          * insert into users table like(name,email) values(:name, :email)
-         * for example name,email (values ('jashan'))
-         * insert into %s (%s) values (%s)
-         * %s means string.
-         * insert into %tbl (%colmn) values(%values)
          */
         $sql = sprintf(
             'insert into %s (%s) values (%s)',
@@ -63,22 +81,26 @@ class QueryBuilder
         }
     }
 
+    function update($table, $data, $where)
+    {
+        $cols = array();
+
+        foreach($data as $key=>$val) {
+            $cols[] = "$key = '$val'";
+        }
+        
+        $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
+        $stmt = $this->pdo->query($sql);
+        $result = $stmt->execute();
+        return $result;
+    }
+
     //delete the data from the db.
 
     public function remove($table, $id)
-    {   
-        $sql = "delete from {$table} WHERE id = '".$id."'";
+    {  
+        $sql = "delete from $table WHERE id = '".$id."'";
         $stmt = $this->pdo->query($sql);
-        $stmt->execute();        
-        $result= $stmt->fetch(PDO::FETCH_CLASS);
-       
-        
-    }
-    
-
-    // update the data.
-    public function update()
-    {
-        
+        $deleted = $stmt->execute();        
     }
 }

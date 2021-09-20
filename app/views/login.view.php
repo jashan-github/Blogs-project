@@ -19,7 +19,7 @@ require 'public/partials/navbar.php';
                         <?php echo $_SESSION['error'] ?>
                     </div>
                     <?php }?>
-                    <form method="POST" action="/admin-login">
+                    <form method="POST" action="/login">
                         <div class="form-group mb-3">
                             <label for=> E-mail address</label>
                             <input type="email" class="form-control" name="email" id="e-mail"

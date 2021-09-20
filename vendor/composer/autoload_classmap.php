@@ -18,5 +18,7 @@ return array(
     'Composer\\Autoload\\ComposerStaticInit9022e8d8ed5de79f322deb3c735a7707' => $vendorDir . '/composer/autoload_static.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Connection' => $baseDir . '/core/database/Connection.php',
+    'DevCoder\\SessionInterface' => $baseDir . '/core/SessionInterface.php',
+    'DevCoder\\SessionManager' => $baseDir . '/core/SessionManager.php',
     'QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
 );

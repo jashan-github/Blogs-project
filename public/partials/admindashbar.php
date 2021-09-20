@@ -7,8 +7,8 @@ require 'header.php';
     <nav>
         <label class="logo"> CMS </label>
         <ul>
-            <li><a href="/admin-dash">Home</a></li>
-            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/add-blogs">Add-Blog</a></li>
             <li><a href="/contactus">Contact US</a></li>
             <li><a href="/members">Users-List</a></li>
             <li><a href="/logout">logout</a></li>

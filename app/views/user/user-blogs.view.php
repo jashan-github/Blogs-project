@@ -1,0 +1,1 @@
+User's Blog View file

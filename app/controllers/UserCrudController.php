@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\App;
+use DevCoder\SessionManager;
 
 class UserCrudController
 {
@@ -30,12 +31,30 @@ class UserCrudController
         return redirect('members');
     }
 
-    public function delete()
-    {
-        App::get('database')->remove('users',[
-            'id' => $_GET['id']
-        ]);
+    public function edit(){
+        $sessionManager = new SessionManager();
+        $table = "users";
+        if(!empty($_POST)){
 
-        return view('admin/members', compact('members'));
+            $id = $_POST['id'];           
+            $where = 'id='.$id;            
+            $save = App::get('database')->update($table, $_POST, $where);
+            $sessionManager->set("message","Member is updated successfully");
+            return redirect('members');
+
+        }else{
+            $id = $_GET['id'];
+            $memberData =  App::get('database')->select($table, $id);
+            
+            return view('admin/edit-member', compact('memberData'));
+        }
+        
+    }
+
+    public function delete(){
+        
+        App::get('database')->remove('users', $_GET['id']);
+
+        return redirect('members');
     }  
 }

@@ -19,6 +19,8 @@ class ComposerStaticInit9022e8d8ed5de79f322deb3c735a7707
         'Composer\\Autoload\\ComposerStaticInit9022e8d8ed5de79f322deb3c735a7707' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Connection' => __DIR__ . '/../..' . '/core/database/Connection.php',
+        'DevCoder\\SessionInterface' => __DIR__ . '/../..' . '/core/SessionInterface.php',
+        'DevCoder\\SessionManager' => __DIR__ . '/../..' . '/core/SessionManager.php',
         'QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
     );
 

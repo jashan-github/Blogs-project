@@ -28,9 +28,9 @@ require 'public/partials/admindashbar.php';
                             <input type="title" name="title" class="form-control" placeholder="Enter your title"><br>
                         </div>
                         <div class="form-group">
-                            <label for="content"> Content</label>
-                            <input type="text" name="content" class="form-control" placeholder="Enter your content"><br>
-                        </div>
+                            <label for="content"> Content</label><br>
+                            <textarea name="content" class="form-control" placeholder="Type here your content"></textarea><br>
+                            </div>
                         <!-- <div class="form-group">
                             <label for="phone "> Phone number </label>
                             <input type="text" name="phone" class="form-control" placeholder="Enter your phone No."><br>
@@ -52,7 +52,7 @@ require 'public/partials/admindashbar.php';
                         </div> -->
 
                         <div class="form-group col mb-3">
-                            <button type="submit" name="add-btn" class="btn btn-primary">Add Employee</button>
+                            <button type="submit" class="btn btn-primary">Add Blog</button>
                         </div>
                     </form>
                 </div>

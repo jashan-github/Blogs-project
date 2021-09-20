@@ -4,7 +4,7 @@ use DevCoder\SessionManager;
 
 require 'public/partials/header.php';
 
-require 'public/partials/navbar.php';
+require 'public/partials/admindashbar.php';
 ?>
 <br><br>
 
