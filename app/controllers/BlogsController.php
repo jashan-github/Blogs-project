@@ -7,32 +7,6 @@ use App\Core\App;
 
 class BlogsController
 {
-    /** This method is used for title of blogs shown on public index page. */
-
-    public function show()
-    {
-        $blogs = App::get('database')->selectAll('blogs');
-
-        $sessionManager = new SessionManager();
-        $userData = $sessionManager->get("userData");
-        if(!empty($userData))
-        {
-            $role = $userData['role_id'];
-            if($role == "1")
-            {
-                return view('dashboard', compact('blogs'));
-            }
-            else
-            {
-                return view('dashboard', compact('blogs'));
-            }
-        }
-        else
-        {
-            return view('index', compact('blogs'));
-        }
-    }
-
     /** This method is used for add blog form shown */
     public function showform()
     {
@@ -52,12 +26,11 @@ class BlogsController
         return redirect('dashboard');
     }
 
-    public function view(){
-        // $sessionManager = new SessionManager();
-        // $userData = $sessionManager->get("userData");
+    public function view()
+    {
         $blog_id = $_GET['id'];
-        $result = App::get('database')->select('blogs',$blog_id);   
-        prd($result);
+        $viewData = App::get('database')->select('blogs',$blog_id);   
+        return view('blog/view-blog', compact('viewData'));
     }
 
     // Edit the Existing Blog.

@@ -7,12 +7,6 @@ use DevCoder\SessionManager;
 
 class AuthController
 {
-    /** main home page */
-    public function home()
-    {
-        return view('index');
-    }
-
     public function login()
     {
         $sessionManager = new SessionManager();
@@ -45,30 +39,29 @@ class AuthController
         }
     }
 
-    public function dashboard(){
-       
+    public function dashboard()
+    {
         $sessionManager = new SessionManager();
         $userData = $sessionManager->get("userData");
-
+        
         if(!empty($userData)){
             $role = $userData['role_id'];
             if($role=="1"){
                 $blogList = App::get('database')->selectAll('blogs');
+                
             }else{
-                $user_id = $userData['id'];                
+                $user_id = $userData['id'];
                 $blogList = App::get('database')->fetchUserBlogs("blogs", $user_id);                
             }
-            $blogs = array();
+            $blogs =  array();
             if(!empty($blogList)){
                 
-                foreach($blogList as $key=>$values){
-                    
+                foreach($blogList as $key=>$values){                    
                     $userid = $values->user_id;
-                    $userData =  App::get('database')->select("users", $userid);
-                    
+                    $userData =  App::get('database')->select("users", $userid);                    
                     $values->blogger = $userData->name;
                     $blogs[$key] = (array) $values;
-                }
+                }                
             }
             $dataArray = array(
                 "blogList"=> $blogs
@@ -78,7 +71,7 @@ class AuthController
             }else{                
                 $sessionManager->set("message","Welcome to the user dashboard.");                
             }
-            return view('admin/dashboard', $dataArray);   
+            return view('dashboard', $dataArray);   
 
         }else
         {
@@ -89,20 +82,6 @@ class AuthController
     public function logout()
     {
         session_destroy();
-        return redirect('login');
+        return redirect('');
     }
-
-    // public function store()
-    // {
-    //     /**
-    //      * insert the users 
-    //      * 
-    //      * and redirect to the all users page
-    //      */
-    //     App::get('database')->insert('users',[
-    //         'name' => $_POST['name']
-    //     ]);
-
-    //     return redirect('users');
-    // }
 }

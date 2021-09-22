@@ -3,7 +3,7 @@ use DevCoder\SessionManager;
 
 require 'public/partials/header.php';
 
-require 'public/partials/admindashbar.php';
+require 'public/partials/navbar.php';
 ?>
 <br>
 <div>
@@ -12,11 +12,11 @@ require 'public/partials/admindashbar.php';
             <div class="col-md-9">
                 <div class="title">
                     <h3>
-                        Name of the Title: <?php echo $viewData->title; ?>
+                        Name of the Title: <?php echo $publicData->title; ?>
                     </h3> <br>
-                    <!-- By: <?php echo $viewData->user_id;?> -->
-                    <h4> Content of the blog:</h4> <?php echo $viewData->content; ?><br>
-                    Publish Date: <?php echo $viewData->publish_date;?>
+                    <!-- By: <?php echo $publicData->user_id;?> -->
+                    <h4> Content of the blog:</h4> <?php echo $publicData->content; ?><br>
+                    Publish Date: <?php echo $publicData->publish_date;?>
                 </div>
             </div>
         </div>

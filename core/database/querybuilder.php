@@ -81,13 +81,14 @@ class QueryBuilder
         }
     }
 
-    function update($table, $data, $where)
-    {
+    function update($table, $data, $where){
         $cols = array();
 
         foreach($data as $key=>$val) {
             $cols[] = "$key = '$val'";
         }
+        
+        // update users set userid = $userid, bank_name = $bankname , fname = $fname where usrid = 1
         
         $sql = "UPDATE $table SET " . implode(', ', $cols) . " WHERE $where";
         $stmt = $this->pdo->query($sql);

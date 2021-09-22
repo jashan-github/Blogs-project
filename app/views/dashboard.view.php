@@ -21,9 +21,6 @@ require 'public/partials/admindashbar.php';
     <?php } ?>
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <div class="line" style="text-align: right;">
-                <a href="add-blog" class="btn btn-primary"> Add blog</a>
-            </div><br>
             <div class="card-header text-center">
                 <h2> Blog's List </h2>
             </div>
@@ -56,7 +53,7 @@ require 'public/partials/admindashbar.php';
 
                                 //if the string doesn't contain any space then it will cut without word basis.
                                 $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-                                $string .= "... <a href='view-blog?id=".$result['id']."'>Read More</a>";
+                                //$string .= "... <a href='view-blog?id=".$result['id']."'>Read More</a>";
                                 
                             }
                             echo $string;
